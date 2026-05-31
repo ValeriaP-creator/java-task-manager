@@ -5,11 +5,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList<Task> tasks = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("PID: " + ProcessHandle.current().pid());
         System.out.println("PROGRAM STARTED");
+
+        ArrayList<Task> tasks = FileManager.loadTasks();
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
 
@@ -21,14 +20,13 @@ public class Main {
             System.out.println("5. Exit");
             System.out.print("Choose: ");
 
-            int choice;
+            String input = scanner.nextLine();
 
+            int choice;
             try {
-                choice = scanner.nextInt();
-                scanner.nextLine(); // pulizia buffer
+                choice = Integer.parseInt(input);
             } catch (Exception e) {
-                System.out.println("Please enter a valid number!");
-                scanner.nextLine(); // reset buffer anche in caso di errore
+                System.out.println("Please enter a number!");
                 continue;
             }
 
@@ -37,7 +35,10 @@ public class Main {
                 case 1:
                     System.out.print("Task title: ");
                     String title = scanner.nextLine();
+
                     tasks.add(new Task(title));
+                    FileManager.saveTasks(tasks);
+
                     System.out.println("Task added!");
                     break;
 
@@ -45,7 +46,6 @@ public class Main {
                     if (tasks.isEmpty()) {
                         System.out.println("No tasks available.");
                     } else {
-                        System.out.println("\nTASK LIST:");
                         for (int i = 0; i < tasks.size(); i++) {
                             System.out.println(i + " - " + tasks.get(i));
                         }
@@ -53,12 +53,12 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.print("Index to complete: ");
-                    int completeIndex = scanner.nextInt();
-                    scanner.nextLine();
+                    System.out.print("Index: ");
+                    int cIndex = Integer.parseInt(scanner.nextLine());
 
-                    if (completeIndex >= 0 && completeIndex < tasks.size()) {
-                        tasks.get(completeIndex).completeTask();
+                    if (cIndex >= 0 && cIndex < tasks.size()) {
+                        tasks.get(cIndex).completeTask();
+                        FileManager.saveTasks(tasks);
                         System.out.println("Task completed!");
                     } else {
                         System.out.println("Invalid index.");
@@ -66,12 +66,12 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.print("Index to delete: ");
-                    int deleteIndex = scanner.nextInt();
-                    scanner.nextLine();
+                    System.out.print("Index: ");
+                    int dIndex = Integer.parseInt(scanner.nextLine());
 
-                    if (deleteIndex >= 0 && deleteIndex < tasks.size()) {
-                        tasks.remove(deleteIndex);
+                    if (dIndex >= 0 && dIndex < tasks.size()) {
+                        tasks.remove(dIndex);
+                        FileManager.saveTasks(tasks);
                         System.out.println("Task deleted!");
                     } else {
                         System.out.println("Invalid index.");
@@ -79,12 +79,13 @@ public class Main {
                     break;
 
                 case 5:
-                    System.out.println("Goodbye!");
+                    FileManager.saveTasks(tasks);
+                    System.out.println("Bye!");
                     scanner.close();
                     return;
 
                 default:
-                    System.out.println("Invalid option.");
+                    System.out.println("Invalid option");
             }
         }
     }

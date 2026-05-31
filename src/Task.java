@@ -17,7 +17,7 @@ public class Task {
     }
 
     public void completeTask() {
-        completed = true;
+        this.completed = true;
     }
 
     @Override
