@@ -1,45 +1,80 @@
-# Task Manager Java
+# 📝 Task Manager Java (CLI)
 
-Applicazione console sviluppata in Java per la gestione di attività (task).
+Un semplice Task Manager sviluppato in Java con interfaccia a riga di comando (CLI).  
+Il progetto permette di gestire una lista di attività con funzionalità CRUD e persistenza dei dati su file.
 
-Questo progetto è stato realizzato per consolidare le conoscenze di programmazione orientata agli oggetti (OOP), gestione delle collezioni e interazione con l'utente tramite console.
+---
 
-## Funzionalità
+## 🚀 Funzionalità
 
-- Aggiunta di nuove attività
-- Visualizzazione dell'elenco delle attività
-- Completamento delle attività
-- Eliminazione delle attività
-- Menu interattivo da console
+- ➕ Aggiunta di nuovi task
+- 📋 Visualizzazione dei task
+- ✔️ Completamento di un task
+- ❌ Eliminazione di un task
+- 💾 Salvataggio automatico su file (`tasks.txt`)
+- 🔄 Caricamento automatico dei task all’avvio
 
-## Tecnologie utilizzate
+---
 
-- Java
+## 🛠️ Tecnologie utilizzate
+
+- Java 21
+- Programmazione orientata agli oggetti (OOP)
 - ArrayList
-- Programmazione Orientata agli Oggetti (OOP)
-- IntelliJ IDEA
+- File I/O (BufferedReader / BufferedWriter)
+- Gestione input da console (Scanner)
 
-## Struttura del progetto
+---
 
-- `Main.java` → gestione del menu e dell'interazione con l'utente
-- `Task.java` → modello dell'attività con stato e metodi dedicati
+## 📂 Struttura del progetto
 
-## Obiettivi del progetto
+src/
+ ├── Main.java
+ ├── Task.java
+ └── FileManager.java
 
-Questo progetto mi ha permesso di esercitarmi su:
+---
 
-- Creazione e gestione di classi Java
-- Utilizzo di ArrayList
-- Gestione dell'input utente tramite Scanner
-- Strutture di controllo (if, switch, cicli)
-- Organizzazione del codice secondo i principi OOP
-
-## Come eseguire il progetto
+## ⚙️ Come eseguire il progetto
 
 1. Clonare il repository
-2. Aprire il progetto in IntelliJ IDEA
-3. Eseguire il file `Main.java`
 
-## Autore
+2. Aprire il progetto con IntelliJ IDEA (o altro IDE Java)
 
-Valeria Possenti
+3. Eseguire la classe `Main`
+
+---
+
+## 🧠 Come funziona
+
+- I task vengono salvati in una lista (`ArrayList`)
+- Ogni modifica aggiorna automaticamente il file `tasks.txt`
+- All’avvio, il programma ricarica i task salvati in precedenza
+
+---
+
+## 📌 Obiettivo del progetto
+
+Questo progetto è stato realizzato per esercitarmi con:
+
+- Programmazione OOP in Java
+- Gestione file (persistenza dati)
+- Logica CRUD
+- Struttura di un progetto Java completo
+
+---
+
+## 📈 Possibili miglioramenti
+
+- Aggiunta priorità ai task
+- Inserimento data di scadenza
+- Interfaccia grafica (JavaFX / Swing)
+- Versione web con Spring Boot e API REST
+- Salvataggio su database (SQLite / MySQL)
+
+---
+
+## 👩‍💻 Autore
+
+Valeria Possenti  
+GitHub: https://github.com/ValeriaP-creator
