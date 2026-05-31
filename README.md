@@ -29,8 +29,11 @@ Il progetto permette di gestire una lista di attività con funzionalità CRUD e 
 ## 📂 Struttura del progetto
 
 src/
+
  ├── Main.java
+ 
  ├── Task.java
+ 
  └── FileManager.java
 
 ---
